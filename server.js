@@ -11,6 +11,9 @@ const port = process.env.PORT || 5000;
 app.use(express.json());
 app.use("/api/blog", require("./routes/blogRoutes"));
 app.use("/api/user", require("./routes/userRoutes"));
+app.use('/',(req, res)=>{
+  res.send('Rxpert APIs')
+})
 
 app.use(errorHandler);
 
