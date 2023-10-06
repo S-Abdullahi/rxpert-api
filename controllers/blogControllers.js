@@ -23,16 +23,18 @@ const getSingleBlog = asyncHandler(async (req, res) => {
 //@route POST /api/blog
 //@access public
 const createBlog = asyncHandler(async (req, res) => {
-  const { title, description, imageUrl } = req.body;
-  if (!title || !description || !imageUrl) {
+  const { imgUrl, heading, textPlain, textColored, preview, body } = req.body;
+  if (!imgUrl || !heading || !textPlain || !textColored || !preview || !body) {
     res.status(400);
     throw new Error("Fill all fields");
   }
-  console.log("request body is", req.body);
   const blog = await Blog.create({
-    title,
-    description,
-    imageUrl,
+    imgUrl,
+    heading,
+    textPlain,
+    textColored,
+    preview,
+    body,
   });
   res.status(201).json(blog);
 });
@@ -61,7 +63,7 @@ const deleteBlog = asyncHandler(async (req, res) => {
     res.status(404);
     throw new Error("Blog post not found");
   }
-  blog.deleteOne({_id: req.params.id})
+  blog.deleteOne({ _id: req.params.id });
   res.status(200).json({ message: "blog post deleted successfully" });
 });
 

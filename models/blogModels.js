@@ -2,18 +2,30 @@ const mongoose = require("mongoose");
 
 const blogSchema = mongoose.Schema(
   {
-    title: {
+    imgUrl: {
       type: String,
-      required: [true, "please add the blog title"],
+      required: [true, "please add img url"],
     },
-    description: {
+    heading: {
       type: String,
-      required: [true, "please add the description"],
+      required: [true, "please add the heading"],
     },
-    imageUrl: {
+    textPlain: {
       type: String,
-      required: [true, "please add the image url"],
+      required: [true, "please add text plain"],
     },
+    textColored: {
+      type: String,
+      required: [true, "please add text colored"],
+    },
+    preview: {
+      type: String,
+      required: [true, "please add preview text"],
+    },
+    body: {
+      type: String,
+      required: [true, "please add body text"],
+    }
   },
   {
     timestamps: true,
